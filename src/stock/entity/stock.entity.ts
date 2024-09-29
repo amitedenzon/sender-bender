@@ -1,30 +1,20 @@
-import { BaseEntity, Column, Entity, PrimaryColumn } from 'typeorm';
+import { Warehouse } from 'src/warehouse/entity/warehouse.entity';
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('stock')
-export class Stock extends BaseEntity {
-  @PrimaryColumn({
-    comment: 'Stock identifier',
-    type: 'varchar',
-  })
+export class Stock {
+  @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column({
-    type: 'int',
-  })
-  count: string;
+  @Column({ type: 'varchar', length: 100 })
+  productName: string;
 
-  @Column({
-    type: 'varchar',
-  })
-  name: string;
+  @Column({ type: 'int' })
+  quantity: number;
 
-  @Column({
-    type: 'text',
-  })
-  description: string;
+  @Column({ type: 'varchar', length: 50 })
+  productCode: string;
 
-  @Column({
-    type: 'boolean',
-  })
-  requiresCooling: boolean;
+  @ManyToOne(() => Warehouse, (warehouse) => warehouse.stock)
+  warehouse: Warehouse;
 }

@@ -23,7 +23,6 @@ export class ShipmentService {
   async findById(id: string): Promise<Shipment> {
     const cachedShipment = await this.cacheManager.get(id);
     if (cachedShipment) {
-      console.log('got from cache');
 
       return cachedShipment as Shipment;
     }
@@ -32,8 +31,6 @@ export class ShipmentService {
     if (shipment) {
       await this.cacheManager.set(id, shipment);
     }
-
-    console.log('got from repo');
 
     return shipment;
   }

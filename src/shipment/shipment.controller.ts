@@ -21,7 +21,7 @@ export class ShipmentController {
     return await this.shipmentService.create(shipmentData);
   }
 
-  @Get('/:id')
+  @Get('/get/:id')
   async findById(@Param('id') id: string): Promise<Shipment> {
     return await this.shipmentService.findById(id);
   }

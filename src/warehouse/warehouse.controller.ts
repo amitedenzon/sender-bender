@@ -1,5 +1,3 @@
-import { CreateWarehouseDto } from './dto/warehouse.dto';
-import { WarehouseService } from './warehouse.service';
 import {
   Body,
   Controller,
@@ -7,6 +5,8 @@ import {
   UsePipes,
   ValidationPipe,
 } from '@nestjs/common';
+import { CreateWarehouseDto } from './dto/warehouse.dto';
+import { WarehouseService } from './warehouse.service';
 
 @Controller('warehouse')
 export class WarehouseController {
@@ -14,7 +14,7 @@ export class WarehouseController {
 
   @Post('/create')
   @UsePipes(ValidationPipe)
-  async createWarehouse(@Body() warehouseData: CreateWarehouseDto) {
-    return await this.warehouseService.createNewWarehouse(warehouseData);
+  async create(@Body() warehouseData: CreateWarehouseDto) {
+    return await this.warehouseService.create(warehouseData);
   }
 }

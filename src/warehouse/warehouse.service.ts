@@ -11,7 +11,7 @@ export class WarehouseService {
     private warehouseRepository: Repository<Warehouse>,
   ) {}
 
-  async createNewWarehouse(warehouse: CreateWarehouseDto) {
+  async create(warehouse: CreateWarehouseDto) {
     return await this.warehouseRepository.save(warehouse);
   }
 }
