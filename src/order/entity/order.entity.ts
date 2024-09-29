@@ -1,5 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
+import { OrderStatus } from '../util/order.status';
 
 @Schema()
 export class Order extends Document {
@@ -12,11 +13,11 @@ export class Order extends Document {
   @Prop({ type: [Object], required: true })
   items: Array<{ productId: string; quantity: number; price: number }>;
 
-  @Prop({ default: 'pending' })
-  status: string;
+  @Prop({ default: OrderStatus.PROCESSING })
+  status: OrderStatus;
 
-  @Prop({ required: true })
-  totalAmount: number;
+  @Prop({ required: false })
+  trackingNumber?: string;
 
   @Prop({ type: Date, default: Date.now })
   createdAt: Date;

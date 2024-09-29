@@ -1,12 +1,15 @@
-import { IsBoolean, IsString } from 'class-validator';
+import { IsNumber, IsString } from 'class-validator';
 
-export class CreateStockDto {
+export class StockDTO {
   @IsString()
-  count: string;
+  productName: string;
+
+  @IsNumber()
+  quantity: number;
+
   @IsString()
-  name: string;
+  productCode: string;
+
   @IsString()
-  description: string;
-  @IsBoolean()
-  requiresCooling: boolean;
+  warehouseId: string;
 }

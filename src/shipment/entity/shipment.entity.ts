@@ -1,3 +1,4 @@
+import { Address } from 'src/util/address.entity';
 import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('shipment')
@@ -8,12 +9,12 @@ export class Shipment extends BaseEntity {
   @Column({
     type: 'text',
   })
-  destination: string;
+  destination: Address;
 
   @Column({
-    type: 'text',
+    type: 'varchar'
   })
-  origin: string;
+  trackingNumber: string;
 
   @Column({
     type: 'float',
