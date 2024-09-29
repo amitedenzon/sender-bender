@@ -6,27 +6,28 @@ import { ShipmentModule } from './shipment/shipment.module';
 import { OrderModule } from './order/order.module';
 import { WarehouseModule } from './warehouse/warehouse.module';
 import { NotificationModule } from './notification/notification.module';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { join } from 'path';
 import { StockModule } from './stock/stock.module';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { ConfigModule } from './config/config.module';
+import { ConfigService } from './config/config.service';
+import * as redisStore from 'cache-manager-redis-store';
 
 @Module({
   imports: [
-    CacheModule.register({ isGlobal: true }),
-    ShipmentModule,
+    CacheModule.register({
+      isGlobal: true,
+      store: redisStore,
+      host: 'localhost',
+      port: 6379,
+    }),    ShipmentModule,
     OrderModule,
     WarehouseModule,
     NotificationModule,
-    TypeOrmModule.forRoot({
-      type: 'postgres',
-      host: 'localhost',
-      port: 5432,
-      username: 'postgres',
-      password: '231202',
-      database: 'warehouse',
-      synchronize: true,
-      autoLoadEntities: true,
-      entities: [join(__dirname, '**', '*.entity.{ts,js}')],
+    TypeOrmModule.forRootAsync({
+      imports: [ConfigModule],
+      useFactory: async (configService: ConfigService) =>
+        configService.postgres,
+      inject: [ConfigService],
     }),
     StockModule,
   ],

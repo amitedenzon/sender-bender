@@ -1,11 +1,8 @@
-import { BaseEntity, Column, Entity, PrimaryColumn } from 'typeorm';
+import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('warehouse')
 export class Warehouse extends BaseEntity {
-  @PrimaryColumn({
-    comment: 'Warehouse identifier',
-    type: 'varchar',
-  })
+  @PrimaryGeneratedColumn('uuid')
   id: string;
 
   @Column({
