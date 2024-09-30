@@ -7,6 +7,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ConfigModule } from './config/config.module';
 import { ConfigService } from './config/config.service';
+import { KafkaModule } from './kafka/kafka.module';
 import { NotificationModule } from './notification/notification.module';
 import { OrderModule } from './order/order.module';
 import { ShipmentModule } from './shipment/shipment.module';
@@ -33,6 +34,7 @@ import { WarehouseModule } from './warehouse/warehouse.module';
       inject: [ConfigService],
     }),
     StockModule,
+    KafkaModule,
   ],
   controllers: [AppController],
   providers: [AppService],

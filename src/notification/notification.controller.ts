@@ -1,14 +1,21 @@
 import { Controller, Get, Post } from '@nestjs/common';
+import { NotificationService } from './notification.service';
 
 @Controller('notification')
 export class NotificationController {
-    @Get()
-    findAll(){
-        return 'all notifications';
-    }
+  constructor(private readonly notificationService: NotificationService) {}
+  @Get('/all')
+  findAll() {
+    return 'all notifications';
+  }
 
-    @Post() 
-    create() {
-        return 'new notification';
-    }
+  @Post()
+  create() {
+    return 'new notification';
+  }
+
+  @Get('/notify')
+  async notify() {
+    return this.notificationService.notify();
+  }
 }
