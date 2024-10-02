@@ -23,7 +23,6 @@ export class ShipmentService {
   async findById(id: string): Promise<Shipment> {
     const cachedShipment = await this.cacheManager.get(id);
     if (cachedShipment) {
-
       return cachedShipment as Shipment;
     }
 

@@ -5,9 +5,6 @@ import { OrderStatus } from '../util/order.status';
 @Schema()
 export class Order extends Document {
   @Prop({ required: true })
-  orderId: string;
-
-  @Prop({ required: true })
   customerId: string;
 
   @Prop({ type: [Object], required: true })

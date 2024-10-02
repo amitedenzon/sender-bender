@@ -26,7 +26,9 @@ import { WarehouseModule } from './warehouse/warehouse.module';
     OrderModule,
     WarehouseModule,
     NotificationModule,
-    MongooseModule.forRoot('mongodb://localhost/27017'),
+    MongooseModule.forRoot(
+      'mongodb://root:example@localhost:27017/orders?authSource=admin',
+    ),
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: async (configService: ConfigService) =>

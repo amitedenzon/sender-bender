@@ -1,7 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
 import { join } from 'path';
-import * as redisStore from 'cache-manager-redis-store';
 
 @Injectable()
 export class ConfigService {

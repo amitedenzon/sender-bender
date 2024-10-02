@@ -1,7 +1,6 @@
 import { Type } from 'class-transformer';
 import {
   IsArray,
-  IsDate,
   IsEnum,
   IsOptional,
   IsString,
@@ -9,26 +8,22 @@ import {
 } from 'class-validator';
 import { Address } from 'src/util/address.entity';
 import { OrderStatus } from '../util/order.status';
-import { OrderItemDTO } from './order.item.dto';
 
-export class OrderDTO {
+export class UpdateOrderDto {
   @IsString()
-  customerId: string;
+  id: string;
 
-  @IsArray()
-  items: OrderItemDTO[];
+  @IsOptional()
+  @IsEnum(OrderStatus)
+  status?: OrderStatus;
 
   @IsOptional()
   @IsString()
   trackingNumber?: string;
 
-  @Type(() => Date)
-  @IsDate()
-  createdAt: Date;
-
   @IsOptional()
-  @IsEnum(OrderStatus)
-  status?: OrderStatus;
+  @IsArray()
+  items?: Array<{ productId: string; quantity: number; price: number }>;
 
   @IsOptional()
   @ValidateNested()

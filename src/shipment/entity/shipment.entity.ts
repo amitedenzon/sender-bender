@@ -12,7 +12,7 @@ export class Shipment extends BaseEntity {
   destination: Address;
 
   @Column({
-    type: 'varchar'
+    type: 'varchar',
   })
   trackingNumber: string;
 
