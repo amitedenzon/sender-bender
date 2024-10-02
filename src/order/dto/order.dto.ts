@@ -1,4 +1,4 @@
-import { Type } from 'class-transformer';
+import { Exclude, Type } from 'class-transformer';
 import {
   IsArray,
   IsDate,
@@ -18,9 +18,8 @@ export class OrderDTO {
   @IsArray()
   items: OrderItemDTO[];
 
-  @IsOptional()
-  @IsString()
-  trackingNumber?: string;
+  @Exclude()
+  trackingId?: string;
 
   @Type(() => Date)
   @IsDate()

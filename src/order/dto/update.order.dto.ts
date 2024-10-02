@@ -19,7 +19,7 @@ export class UpdateOrderDto {
 
   @IsOptional()
   @IsString()
-  trackingNumber?: string;
+  trackingId?: string;
 
   @IsOptional()
   @IsArray()

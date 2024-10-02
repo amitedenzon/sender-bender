@@ -14,7 +14,7 @@ export class Shipment extends BaseEntity {
   @Column({
     type: 'varchar',
   })
-  trackingNumber: string;
+  trackingId: string;
 
   @Column({
     type: 'float',

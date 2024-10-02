@@ -14,7 +14,7 @@ export class Order extends Document {
   status: OrderStatus;
 
   @Prop({ required: false })
-  trackingNumber?: string;
+  trackingId?: string;
 
   @Prop({ type: Date, default: Date.now })
   createdAt: Date;

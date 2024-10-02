@@ -1,5 +1,10 @@
 import { Type } from 'class-transformer';
-import { IsNumber, IsString, ValidateNested } from 'class-validator';
+import {
+  IsNumber,
+  IsOptional,
+  IsString,
+  ValidateNested,
+} from 'class-validator';
 import { Address } from 'src/util/address.entity';
 
 export class CreateShipmentDto {
@@ -7,8 +12,9 @@ export class CreateShipmentDto {
   @Type(() => Address)
   destination: Address;
 
+  @IsOptional()
   @IsString()
-  trackingNumber: string;
+  trackingId: string;
 
   @IsNumber()
   price: number;

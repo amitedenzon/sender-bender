@@ -33,4 +33,18 @@ export class ShipmentService {
 
     return shipment;
   }
+
+  async findByTrackingId(trackingId: string): Promise<Shipment> {
+    const cachedShipment = await this.cacheManager.get(trackingId);
+    if (cachedShipment) {
+      return cachedShipment as Shipment;
+    }
+
+    const shipment = await this.shipmentRepository.findOneBy({ trackingId });
+    if (shipment) {
+      await this.cacheManager.set(trackingId, shipment);
+    }
+
+    return shipment;
+  }
 }

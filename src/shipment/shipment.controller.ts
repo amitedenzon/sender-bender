@@ -13,7 +13,7 @@ import { ShipmentService } from './shipment.service';
 
 @Controller('shipment')
 export class ShipmentController {
-  constructor(private shipmentService: ShipmentService) {}
+  constructor(private readonly shipmentService: ShipmentService) {}
 
   @Post('/create')
   @UsePipes(ValidationPipe)

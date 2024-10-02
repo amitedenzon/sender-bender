@@ -8,6 +8,7 @@ import { ShipmentService } from './shipment.service';
 @Module({
   imports: [ConfigModule, TypeOrmModule.forFeature([Shipment])],
   providers: [ShipmentService],
+  exports: [ShipmentService],
   controllers: [ShipmentController],
 })
 export class ShipmentModule {}
