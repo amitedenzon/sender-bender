@@ -5,12 +5,12 @@ import {
   IsString,
   ValidateNested,
 } from 'class-validator';
-import { Address } from 'src/util/address.entity';
+import { AddressDto } from 'src/util/address/address.dto';
 
 export class CreateShipmentDto {
   @ValidateNested()
-  @Type(() => Address)
-  destination: Address;
+  @Type(() => AddressDto)
+  destination: AddressDto;
 
   @IsOptional()
   @IsString()

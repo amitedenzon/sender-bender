@@ -7,7 +7,7 @@ import {
   IsString,
   ValidateNested,
 } from 'class-validator';
-import { Address } from 'src/util/address.entity';
+import { AddressDto } from 'src/util/address/address.dto';
 import { OrderStatus } from '../util/order.status';
 import { OrderItemDTO } from './order.item.dto';
 
@@ -16,6 +16,8 @@ export class OrderDTO {
   customerId: string;
 
   @IsArray()
+  @ValidateNested({ each: true })
+  @Type(() => OrderItemDTO)
   items: OrderItemDTO[];
 
   @Exclude()
@@ -31,6 +33,6 @@ export class OrderDTO {
 
   @IsOptional()
   @ValidateNested()
-  @Type(() => Address)
-  destination: Address;
+  @Type(() => AddressDto)
+  destination: AddressDto;
 }

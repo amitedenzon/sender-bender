@@ -6,7 +6,7 @@ import {
   IsString,
   ValidateNested,
 } from 'class-validator';
-import { Address } from 'src/util/address.entity';
+import { AddressDto } from 'src/util/address/address.dto';
 import { OrderStatus } from '../util/order.status';
 
 export class UpdateOrderDto {
@@ -27,6 +27,6 @@ export class UpdateOrderDto {
 
   @IsOptional()
   @ValidateNested()
-  @Type(() => Address)
-  destination: Address;
+  @Type(() => AddressDto)
+  destination: AddressDto;
 }

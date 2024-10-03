@@ -1,4 +1,4 @@
-import { Address } from 'src/util/address.entity';
+import { Address } from 'src/util/address/address.entity';
 import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('shipment')
@@ -6,9 +6,7 @@ export class Shipment extends BaseEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column({
-    type: 'text',
-  })
+  @Column(() => Address, { prefix: 'destination_' })
   destination: Address;
 
   @Column({
